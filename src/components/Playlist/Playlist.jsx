@@ -2,11 +2,11 @@ import Button from "../Button";
 import PropTypes from "prop-types";
 import Tracklist from "../Tracklist/Tracklist";
 import styles from "./Playlist.module.css";
-import useSearch from "../../hooks/useSearch";
+import useFetch from "../../hooks/useFetch";
 import { useState } from "react";
 
 const Playlist = ({ playlist, setPlaylist }) => {
-  const { createPlaylist, error } = useSearch();
+  const { createPlaylist, error } = useFetch();
   const [playlistName, setPlaylistName] = useState("");
   const [isSaving, setIsSaving] = useState(false);
 

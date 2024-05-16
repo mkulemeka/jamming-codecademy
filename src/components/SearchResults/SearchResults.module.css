@@ -12,7 +12,7 @@
 
   @media (min-width: 768px) {
     min-width: 30rem;
-    max-height: 40rem;
+    min-height: 40rem;
   }
 }
 
