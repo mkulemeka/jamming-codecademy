@@ -1,0 +1,5 @@
+.tracklist {
+  width: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}

@@ -1,0 +1,21 @@
+.article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+
+  padding: .75rem 0;
+
+  border-bottom: 0.2px solid rgb(255, 255, 255);
+}
+
+.h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.p {
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
