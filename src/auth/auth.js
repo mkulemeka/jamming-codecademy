@@ -47,17 +47,21 @@ const args = new URLSearchParams(window.location.search);
 const code = args.get("code");
 
 // If we find a code, we're in a callback, do a token exchange
-if (code) {
-  const token = await getToken(code);
-  currentToken.save(token);
+async function handleCallback() {
+  if (code) {
+    const token = await getToken(code);
+    currentToken.save(token);
 
-  // Remove code from URL so we can refresh correctly.
-  const url = new URL(window.location.href);
-  url.searchParams.delete("code");
+    // Remove code from URL so we can refresh correctly.
+    const url = new URL(window.location.href);
+    url.searchParams.delete("code");
 
-  const updatedUrl = url.search ? url.href : url.href.replace("?", "");
-  window.history.replaceState({}, document.title, updatedUrl);
+    const updatedUrl = url.search ? url.href : url.href.replace("?", "");
+    window.history.replaceState({}, document.title, updatedUrl);
+  }
 }
+
+handleCallback();
 
 async function redirectToSpotifyAuthorize() {
   const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -156,8 +160,5 @@ async function refreshTokenClick() {
   const token = await refreshToken();
   currentToken.save(token);
 }
-
-
-// HTML Template Rendering with basic data binding - demoware only.
 
 export { getUserData, loginWithSpotifyClick, logout, refreshTokenClick };
