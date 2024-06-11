@@ -1,38 +1,23 @@
 import "./App.css";
 
 import { Form, Login, Playlist, SearchResults } from "./components";
-import { useEffect, useState } from "react";
 
-import { logout } from "./auth/auth";
+import useAuth from "./hooks/useAuth";
 import useFetch from "./hooks/useFetch";
+import { useState } from "react";
 
 const App = () => {
   const [search, setSearch] = useState("");
   const [playlist, setPlaylist] = useState([]);
+  const { isAuthenticated } = useAuth();
   const { searchResults, fetchData, loading, setSearchResults } = useFetch();
-
-  useEffect(() => {
-    const tokenExpiration = localStorage.getItem("expires");
-    if (tokenExpiration) {
-      const expirationTime = new Date(tokenExpiration).getTime();
-      const currentTime = new Date().getTime();
-      const timeDifference = expirationTime - currentTime;
-
-      const logOutTimer = setTimeout(() => {
-        logout();
-      }, timeDifference);
-
-      return () => clearTimeout(logOutTimer);
-    }
-  }, []);
 
   const handleSearch = () => {
     if (!search) setSearchResults([]);
     fetchData(search);
   };
 
-  const token = localStorage.getItem("access_token");
-  if (!token) return <Login />;
+  if (!isAuthenticated) return <Login />;
 
   return (
     <main className="app">

@@ -1,18 +1,19 @@
-import { getUserData } from "../auth/auth";
+import { spotifyAuth } from "../auth/spotifyAuth";
 import { useState } from "react";
 
-const options = {
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-  },
-};
-
 const baseUrl = "https://api.spotify.com/v1";
+const { getUserData } = spotifyAuth;
 
 const useFetch = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  
+  const options = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+    },
+  };
 
   const fetchData = async (searchValue) => {
     if (!searchValue) return;
