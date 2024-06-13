@@ -6,7 +6,7 @@
 
 const spotifyConfig = {
   clientId: import.meta.env.VITE_REACT_APP_SPOTIFY_CLIENT_ID,
-  redirectUrl: "http://localhost:5173/",
+  redirectUrl: "https://jaaming-spotify.netlify.app/",
   authorizationEndpoint: "https://accounts.spotify.com/authorize",
   tokenEndpoint: "https://accounts.spotify.com/api/token",
   scope:
