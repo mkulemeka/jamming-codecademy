@@ -1,0 +1,22 @@
+.audio {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+}
+
+.audioButton {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+
+  color: white;
+  background-color: transparent;
+
+  font-size: 1.2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

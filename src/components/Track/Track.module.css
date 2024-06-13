@@ -9,6 +9,12 @@
   border-bottom: 0.2px solid rgb(255, 255, 255);
 }
 
+.firstDivChild {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
 .h3 {
   font-size: 1.25rem;
   font-weight: 600;
